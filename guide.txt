@@ -1,0 +1,170 @@
+✅ Plano de Projeto: Infraestrutura na Cloud com ELK, Terraform e Ansible
+🎯 Objetivo Final
+
+    Ter um ambiente ELK (Elasticsearch, Logstash, Kibana) rodando em uma nuvem pública, provisionado via Terraform, configurado via Ansible, e podendo ser testado pelo seu notebook (por ex. enviando logs e acessando o Kibana via navegador).
+
+🗓️ Duração estimada: 2 a 4 semanas (se fizer no tempo livre)
+🔷 Fase 1: Fundamentos (Ambientação)
+
+Objetivo: Dominar os conceitos básicos de Terraform, Ansible, ELK e Cloud
+🔸 1.1. Terraform
+
+    📚 Aprender: O que é Terraform, providers, resources, state
+
+    ✅ Prática: Criar uma instância EC2 simples na AWS ou similar (GCP/Azure)
+
+    🔧 Ferramentas: AWS CLI + Terraform
+
+Referência curta:
+
+    HashiCorp Learn Terraform
+
+🔸 1.2. Ansible
+
+    📚 Aprender: O que é Ansible, inventário, playbooks, roles
+
+    ✅ Prática: Fazer um ansible-playbook para instalar o nginx em uma máquina local ou remota via SSH
+
+    🔧 Ferramentas: Ansible + SSH
+
+Referência curta:
+
+    Ansible Docs Quickstart
+
+🔸 1.3. Stack ELK
+
+    📚 Aprender: O que é ELK, fluxo dos logs, arquitetura
+
+    ✅ Prática: Rodar stack ELK localmente via Docker para ver Kibana e enviar logs via terminal
+
+🔷 Fase 2: Projeto Terraform (Provisionamento de Infraestrutura)
+
+Objetivo: Criar a infraestrutura da cloud com Terraform
+🔸 2.1. Escolher provedor (sugestão: AWS Free Tier)
+
+    Criar uma conta AWS ou usar uma existente
+
+    Criar chave SSH e configurar
+
+🔸 2.2. Criar VPC e instância
+
+    Criar VPC, Subnet, Security Group, e EC2 via Terraform
+
+    Liberar portas:
+
+        22 (SSH)
+
+        5601 (Kibana)
+
+        9200 (Elasticsearch)
+
+        5000 (Logstash)
+
+Resultado Esperado: VM criada e acessível por SSH
+🔷 Fase 3: Projeto Ansible (Configuração da Infraestrutura)
+
+Objetivo: Instalar e configurar ELK com Ansible
+🔸 3.1. Inventário e conexão
+
+    Criar inventário com IP da VM
+
+    Testar ansible -m ping all
+
+🔸 3.2. Escrever Playbooks
+
+    Instalar:
+
+        Java
+
+        Elasticsearch
+
+        Logstash
+
+        Kibana
+
+    Configurar templates: elasticsearch.yml, logstash.conf, kibana.yml
+
+Resultado Esperado: Stack ELK funcional na VM
+🔷 Fase 4: Integração Local (Notebook como Cliente)
+
+Objetivo: Enviar logs da sua máquina para o ambiente na cloud
+🔸 4.1. Acesso ao Kibana
+
+    Acessar http://<ip-da-vm>:5601 pelo navegador
+
+🔸 4.2. Enviar logs do seu notebook
+
+    Enviar manualmente via nc:
+
+    echo '{"log":"teste"}' | nc <ip-da-vm> 5000
+
+    Ou instalar o Filebeat no seu notebook para enviar /var/log/syslog para o Logstash remoto
+
+🔷 Fase 5: Testes, Ajustes e Estudo Profundo
+
+Objetivo: Refatorar, documentar e explorar mais
+🔸 5.1. Logging real
+
+    Coletar logs de:
+
+        Docker
+
+        Apache/Nginx
+
+        Syslog
+
+🔸 5.2. Explorar dashboards no Kibana
+
+    Criar visualizações
+
+    Filtrar logs
+
+🔸 5.3. Automação Total
+
+    Rodar o projeto com:
+
+        terraform apply
+
+        ansible-playbook
+
+        Acesso pronto ao Kibana
+
+🔷 Fase 6: Documentação e Entrega Final (Opcional)
+
+Objetivo: Transformar o projeto em portfólio ou reuso
+Sugestões:
+
+    Criar um repositório no GitHub
+
+    Documentar com um README:
+
+        Visão geral
+
+        Instruções de uso
+
+        Screenshots do Kibana
+
+    Publicar como projeto pessoal ou acadêmico
+
+🎒 Materiais de Apoio
+
+    Guia Terraform + AWS EC2
+
+    Instalação do ELK
+
+    Playbook exemplo ELK
+
+    Curso grátis Ansible + Infra
+
+🧩 Quer que eu te ajude com os códigos?
+
+Se quiser, posso começar já te entregando:
+
+    Um main.tf inicial para AWS
+
+    Um ansible-playbook.yml básico para o Elasticsearch
+
+    Um esqueleto de projeto com estrutura /infra e /config
+
+Quer que eu gere isso agora pra você começar?
+
